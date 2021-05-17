@@ -49,7 +49,7 @@ body{
     margin-right: 30%;
     font-size: 50px;
     border-bottom: 8px solid violet;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
     padding: 13px 0 ;
 }
 .textbox{
@@ -97,4 +97,12 @@ body{
 }
 .btn:hover{
     background-color: grey;
+}
+
+.error{
+   /* background: white; */
+   color:red;
+   padding: 5px;
+   width:100%;
+   border-radius: 5px;
 }

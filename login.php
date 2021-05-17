@@ -4,16 +4,31 @@
         <title>Menswear</title>
         <link rel="stylesheet" href="css/login.css">
     </head>
+    <style>
+        p{
+            color: red;
+            display: flex;
+            width: 90%;
+            margin-left: 10%;
+            /* text-size-adjust: 50%; */
+            font-size: 15px; 
+        }
+
+    </style>
     <body>
     <div class="navbar">
             <img src="images/logo.png" class="rotate">
     </div>
-    <form action="login.php" method="POST">
+    
+    <form action="log.php" method="post">
         <div class="login-box">
             <h1>Login</h1>
+            <?php if (isset($_GET['error'])){ ?>
+                <p class="error"><?php echo $_GET['error']; ?></p>
+             <?php } ?>
             <div class="textbox">
                 <i class="fa fa-user" aria-hidden="true"></i>
-                <input type="number" placeholder="Mobile No" name="mob">
+                <input type="text" placeholder="Mobile No" name="mob">
             </div>
 
             <div class="textbox">
@@ -25,42 +40,7 @@
  
         </div>
     </form>
-
-    <?php
-$host="localhost";
-$user="postgres";
-$pass="sanjyot";
-$db="menswear";
-
-$m=isset($_GET["mob"]);
-$mob=(is_int($m)==1);
-echo $mob;
-// $mob=9657302862;
-$pas='sanjyot';
-
-// echo"<br> $mob $password";
-$conn=pg_connect("host=$host dbname=$db user=$user password=$pass");
-if(!$conn){
-    echo " 121313An error occured .\n";
-    exit;
-}
-
-$result=pg_query($conn,("select mobno from cust where mobno='' and password='$pas'") );
-if($result==NULL){
-   echo "<br> An error occured .\n";
-   exit;
-}
-
-$r=pg_fetch_assoc($result);
-if($r==0){
-   echo ('<br>Customer Not Exist');
-}else{
-    echo ("<br>Successful Login");
-}
-
-pg_close($conn);
-?>
-
+    
 
     </body>
 </html>

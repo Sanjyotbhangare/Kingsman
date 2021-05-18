@@ -28,7 +28,7 @@
                 <p class="error"><?php echo $_GET['error']; ?></p>
              <?php } ?>
             <div class="textbox">
-                <i class="fas fa-mobile" aria-hidden="true"></i>
+                <i class="fa fa-mobile" aria-hidden="true"></i>
                 <input type="text" placeholder="Mobile No" name="mob">
             </div>
 

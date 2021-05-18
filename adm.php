@@ -25,10 +25,10 @@ if(empty($id)){
 
    $sql="select id,password from admin where id='$id' and password='$pas' ";
    $result=pg_query($conn,$sql);
-   $r=pg_fetch_array($result,$row=null);
-   print_r($r);
+    $r=pg_fetch_array($result,$row=null);
+    print_r($r);
 
-   if($r==NULL){
+   if($r==null){
     header("Location: admin.php?error=Invalid ID Number or Password");
     exit();
    }else{
@@ -39,7 +39,7 @@ if(empty($id)){
 }
     
 }else{
-    header("Location: admin.php?error");
+    header("Location: admin.php?error=Failed");
     exit();
 }
 

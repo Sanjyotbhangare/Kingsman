@@ -13,9 +13,6 @@
             /* text-size-adjust: 50%; */
             font-size: 15px; 
         }
-        h1{
-            margin-right: 40%;
-        }
 
     </style>
     <body>
@@ -23,15 +20,15 @@
             <img src="images/logo.png" class="rotate">
     </div>
     
-    <form action="log.php" method="post">
+    <form action="adm.php" method="post">
         <div class="login-box">
-            <h1>Login</h1>
+            <h1>AdminLogin</h1>
             <?php if (isset($_GET['error'])){ ?>
                 <p class="error"><?php echo $_GET['error']; ?></p>
              <?php } ?>
             <div class="textbox">
                 <i class="fa fa-user" aria-hidden="true"></i>
-                <input type="text" placeholder="Mobile No" name="mob">
+                <input type="text" placeholder="ID" name="id">
             </div>
 
             <div class="textbox">

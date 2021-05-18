@@ -46,7 +46,8 @@ body{
 }
 .login-box h1{
     float: right;
-    margin-right: 30%;
+    text-align: center;
+    /* margin-right: 30%; */
     font-size: 50px;
     border-bottom: 8px solid violet;
     margin-bottom: 40px;

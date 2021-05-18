@@ -13,9 +13,7 @@
             /* text-size-adjust: 50%; */
             font-size: 15px; 
         }
-        h1{
-            margin-right: 40%;
-        }
+        
 
     </style>
     <body>
@@ -23,15 +21,20 @@
             <img src="images/logo.png" class="rotate">
     </div>
     
-    <form action="log.php" method="post">
+    <form action="reg.php" method="post">
         <div class="login-box">
-            <h1>Login</h1>
+            <h1>Registration</h1>
             <?php if (isset($_GET['error'])){ ?>
                 <p class="error"><?php echo $_GET['error']; ?></p>
              <?php } ?>
             <div class="textbox">
-                <i class="fa fa-user" aria-hidden="true"></i>
+                <i class="fas fa-mobile" aria-hidden="true"></i>
                 <input type="text" placeholder="Mobile No" name="mob">
+            </div>
+
+            <div class="textbox">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <input type="text" placeholder="Name" name="name">
             </div>
 
             <div class="textbox">
@@ -39,7 +42,12 @@
                 <input type="password" placeholder="Password" name="pas">
             </div>
 
-            <input class="btn" type="submit" name="" value="Sign In">
+            <div class="textbox">
+            <i class="fa fa-lock" aria-hidden="true"></i>
+                <input type="password" placeholder="Confirm Password" name="cpas">
+            </div>
+
+            <input class="btn" type="submit" name="" value="Register">
  
         </div>
     </form>

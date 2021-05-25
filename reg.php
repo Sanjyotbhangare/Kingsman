@@ -63,7 +63,8 @@ if(empty($mobno)){
     
      $sql="insert into cust(mobno,cname,password) values($m,'$name','$pas')";
      if(pg_query($conn,$sql)){
-         echo "Hello";        
+        header("Location: login.php");
+        exit();        
      }else{
         header("Location: registration.php?error=Invalid ID");
         exit();

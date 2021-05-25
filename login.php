@@ -31,7 +31,7 @@
              <?php } ?>
             <div class="textbox">
                 <i class="fa fa-user" aria-hidden="true"></i>
-                <input type="number" autocomplete="off" placeholder="Mobile No" name="mob">
+                <input type="number" autocomplete="FALSE" placeholder="Mobile No" name="mob">
             </div>
 
             <div class="textbox">

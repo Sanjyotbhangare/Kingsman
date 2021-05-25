@@ -1,6 +1,7 @@
 <?php
 include"db_conn.php";
 
+
 if(isset($_POST['mob']) && isset($_POST['pas'])){
 
 function validate($data){
@@ -32,7 +33,8 @@ if(empty($mob)){
     header("Location: login.php?error=Invalid Mobile Number or Password");
     exit();
    }else{
-       echo "Hello";
+    header("Location: main.php");
+    exit();
    }
 
 

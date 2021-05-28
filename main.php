@@ -2,58 +2,137 @@
 <head>
   <title>Menswear</title>
   <meta charset="utf-8">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/side.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
-<body class="container">
-
-
-
-   <div class="row">
-   <?php 
-   include"db_conn.php";
-
-   $query="select pid,bname,catgnm,ctnm,pnm,fnm,size,rate,cstk,image from vproduct order by pid";
-    $sql=pg_query($conn,$query);
-
-    $num=pg_num_rows($sql);
-
-    if($num>0){
-        while($product=pg_fetch_array($sql)){
-         ?>
-
-        <div class="col-lg-3 col-md-3 col-sm-12">
-            <form>
-            <div class="card">
-              <h6 class="card-title"> <?php  echo $product['bname']."\t".$product['catgnm']."\t".$product['pnm']."\t".$product['ctnm']; ?>  </h6>
-            
-                <div class="card-body">
-                <img src="./images/<?php echo $product['image']; ?>" alt="image" class="img-fluid">
-                <br>
-                <h9><?php  echo $product['fnm']."\t".$product['size']; ?></h9>
-                <br><h8> &#8377; <?php  echo $product['rate']; ?></h8>
-                
-                </div>
-
-            </div>
-            
-            </form>
-        
-        
-        </div>   
-
-
-
-        <?php
-        }
-    }
-
-
-?>
-
+<body>
+  <div class="page">
+<div class="navbar">
+            <img src="images/logo.png" class="logo rotate">
+            <div class="bu">
+            <button type="submit" style="float: right"><a href="./cart.php" class="cart">Logout</a></button>
+            <button type="button"><a href="./cart.php">Cart</a></button>
+    </div>
 </div>
+  <?php include("filter.php"); ?>
+
+    <div class="sidenav">     
+
+    <form action="card.php" method="GET">
+  <select name="brand">
+    <option value="none" selected disabled hidden>Brand</option>
+
+  <?php
+  $num=pg_num_rows($brand);
+if($num>0){  
+    while($product=pg_fetch_array($brand)){
+     ?>
+    
+    <option><?php echo $product['bname']; ?></option>
+
+  <?php
+    }
+  }
+  ?>
+  </select>
+  <br><br>
+  <select name="category">
+  <option value="none" selected disabled hidden>Category</option>
+
+<?php
+$num=pg_num_rows($category);
+if($num>0){  
+  while($product=pg_fetch_array($category)){
+   ?>
+  
+  <option><?php echo $product['catgnm']; ?></option>
+
+<?php
+  }
+}
+?>
+</select>
+<br><br>
+
+<select name="ctype">
+<option value="none" selected disabled hidden>Clothe</option>
+<?php
+$num=pg_num_rows($ctype);
+if($num>0){  
+  while($product=pg_fetch_array($ctype)){
+   ?>
+  
+  <option><?php echo $product['ctnm']; ?></option>
+
+<?php
+  }
+}
+?>
+</select>
+<br><br>
+<select name="pattern">
+<option value="none" selected disabled hidden>Pattern</option>
+<?php
+$num=pg_num_rows($pattern);
+if($num>0){  
+  while($product=pg_fetch_array($pattern)){
+   ?>
+  
+  <option><?php echo $product['pnm']; ?></option>
+
+<?php
+  }
+}
+?>
+</select>
+<br><br>
+
+<select name="fitting">
+<option value="none" selected disabled hidden>Fitting</option>
+<?php
+$num=pg_num_rows($fitting);
+if($num>0){  
+  while($product=pg_fetch_array($fitting)){
+   ?>
+  
+  <option><?php echo $product['fnm']; ?></option>
+
+<?php
+  }
+}
+?>
+</select>
+<br><br>
+<select name="size">
+<option value="none" selected disabled hidden>Size</option>
+<?php
+$num=pg_num_rows($size);
+if($num>0){  
+  while($product=pg_fetch_array($size)){
+   ?>
+  
+  <option><?php echo $product['size']; ?></option>
+
+<?php
+  }
+}
+?>
+</select>
+<br><br>
+  <button type="submit" class="bu">Apply</button>
+</form>
+
+
+
+
+    </div>
+    <iframe class="main" height="85%" width="85.01%" allowtransparency="true" src="new.php" name="iframe_a"></iframe>
+    <!-- <iframe href="new.php" height="50%" width="70%"></iframe> -->
+  </div>
 </body>
 </html>

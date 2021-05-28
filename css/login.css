@@ -39,10 +39,13 @@ body{
 .login-box{
     width: 280px;
     position: absolute;
+    
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    color:black;
+    background-color:rgba(130, 196, 216, 0.397);
+    border-radius: 20px;
+    color:rgb(113, 113, 197);
 }
 .login-box h1{
     float: right;
@@ -80,6 +83,8 @@ body{
     width: 100%;
     background: none;
     border: 2px solid violet;
+    border-radius: 20px;
+
     color: black;
     padding: 5px;
     font-size: 18px;

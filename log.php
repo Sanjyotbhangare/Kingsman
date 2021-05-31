@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include"db_conn.php";
 
 
@@ -33,6 +35,7 @@ if(empty($mob)){
     header("Location: login.php?error=Invalid Mobile Number or Password");
     exit();
    }else{
+    $_SESSION['mobno']=$mob;
     header("Location: main.php");
     exit();
    }

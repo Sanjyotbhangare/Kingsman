@@ -37,6 +37,7 @@
 .navbar{
     /* margin-top: 2000%; */
     padding-top: 1%;
+    position: relative;
     width:95%;
     height: 15%;
     margin: auto;
@@ -72,7 +73,8 @@ button{
 .content{
     color:#fbfcfd;
     position: absolute;
-    color: black;
+    color: whitesmoke;
+    /* border: 2px; */
     top:50%;
     left: 8%;
     transform: translateY(-50%);
@@ -83,4 +85,8 @@ h1{
   
     margin: 10px 0 30px;
     line-height: 80px;
+}
+h2{
+  color: white;
+  font-size: 65px;
 }

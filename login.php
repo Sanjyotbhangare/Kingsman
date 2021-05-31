@@ -1,3 +1,6 @@
+<?php
+ session_start();
+?>
 <html>
     <head>
         <meta charset="utf-8">
@@ -31,7 +34,8 @@
              <?php } ?>
             <div class="textbox">
                 <i class="fa fa-user" aria-hidden="true"></i>
-                <input type="number" autocomplete="off" placeholder="Mobile No" name="mob">
+                <input type="text" autocomplete="off" placeholder="Mobile No" name="mob">
+    
             </div>
 
             <div class="textbox">
@@ -43,6 +47,9 @@
  
         </div>
     </form>
+    <?php
+       $_SESSION['mobno']='mob';
+    ?>
     
 
     </body>

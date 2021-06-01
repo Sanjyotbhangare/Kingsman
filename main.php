@@ -9,7 +9,7 @@ session_start();
   <meta charset="utf-8">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/side.css">
-  <link rel="stylesheet" href="css/main.css">
+  <!-- <link rel="stylesheet" href="css/main.css"> -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -17,6 +17,49 @@ session_start();
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <style>
+/* 
+.logo{
+    width:100px;
+    cursor:pointer;
+    /* margin-left: 2%; */
+/* }
+.rotate{
+    animation: rotation 8s infinite linear;
+ }
+
+@keyframes rotation{
+ from{
+     transform: rotate(0deg);
+ }
+ to{
+     transform: rotate(359deg);
+ }
+}
+
+
+
+.navbar{
+    /* margin-top: 2000%; */
+    /* padding-top: 1%;
+    position: relative;
+    width:95%;
+    height: 15%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+} */ 
+
+
+.navbar img{
+  /* height: 250%; */
+  margin-top: 2%;
+  /* width: 10%; */
+}
+
+body{
+  background-color: rgb(61, 51, 51);
+}
 
 .ca{
     margin-left: 15%;

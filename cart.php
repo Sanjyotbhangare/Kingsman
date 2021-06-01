@@ -9,11 +9,17 @@ session_start();
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://ude.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
+<style>
+
+  
+ 
+</style>
 <body>
     <div class="hero">
         <div class="navbar">
@@ -29,6 +35,7 @@ session_start();
                 <h2>MY CART</h2>
             </div>
             <div class="col-lg-9">
+                <div class="border bg-light rounded p-4">
              <table class="table">
                 <thead class="text-center">
                     <th scope="col">Product Id</th>
@@ -40,11 +47,11 @@ session_start();
                     <th scope="col">Size</th>
                     <th scope="col">Price</th>
                     <th scope="col">Quantity</th>
+                    <th scope="col">Total</th>
                     <th scope="col"></th>
                 </thead>
                 <tbody class="text-center">
                 <?php
-                $total=0;
                 include("db_conn.php");
                 if(isset($_SESSION['cart']))
                 {   
@@ -63,16 +70,24 @@ session_start();
                         <td><?php echo $product['pnm']; ?></td>
                         <td><?php echo $product['fnm']; ?></td>
                         <td><?php echo $product['size']; ?></td>
-                        <td>&#8377;<?php echo $product['rate'];?></td>
-                        <td><input type='number'class='text-center' value='1' min='1' max='10'></td>
+                        <td><?php echo $product['rate'];?><input type="hidden" class='iprice' value='<?php echo $product['rate'];?>'></td>
                         <td>
+                          <form action="mycart.php" method="POST">
+                
+                          <input type='number'class='text-center iquantity' name="mod_quantity" onchange="this.form.submit();" value="<?php echo $value['Quantity'];  ?>" min='1' max='10'>
+                          <input type='hidden' name='pid' value='<?php echo $product['pid']; ?>'>
+                          </form>
+                         </td>
+                        <td class='itotal'></td>
+                        <td>
+
                             <form action="mycart.php" method="POST">
-                            <button class='btn btn-sm btn-outline-danger' name="remove">REMOVE</button>
+                            <button class='btn btn-outline-danger' name="remove">Remove</button>
                             <input type='hidden' name='pid' value='<?php echo $product['pid']; ?>'>
                             </form>                       
                         </td>
 
-                        <?php $total=$total+$product['rate']; ?>
+                        
                     </tr>
                     <?php
                     }
@@ -82,14 +97,24 @@ session_start();
                 </tbody>
             </table>
             </div>
+        </div>
 
-
-            <div class="col-lg-3">
+            <div class="col-lg-2.5">
             <div class="border bg-light rounded p-4">
-                <h4>Total :</h4>
-                <h5 class="text-right"><?php echo $total ?></h5>
+                <h4>Grand Total :</h4>
+                <h5 class="text-right" id="gtotal"></h5>
                 <br>
-                <form>
+                <?php 
+                 if(isset($_SESSION['cart']) && count($_SESSION['cart'])>0)
+                 {
+                ?>
+                <form action="purchase.php" method="POST">
+                    <div class="form-group">
+                    <label>Address</label>
+                    <input type="text" name="address" class="form-control" required>
+                    </div>
+
+
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
                     <label class="form-chevk-label" for="flexRadioDefault2">
@@ -97,8 +122,11 @@ session_start();
                     </label>
                 </div>
         
-                    <button class="btn btn-primary btn-block">Make Purchase</button>
+                    <button type="submit" class="btn btn-primary btn-block" name="pay">Make Purchase</button>
                 </form>
+                <?php 
+                 }
+                 ?>
             </div>
             </div>
 
@@ -112,5 +140,30 @@ session_start();
      
 
 </div>
+
+<script>
+  var gt=0;
+  var iprice=document.getElementsByClassName('iprice');
+  var iquantity=document.getElementsByClassName('iquantity');
+  var itotal=document.getElementsByClassName('itotal');
+  var gtotal=document.getElementById('gtotal');
+
+  function subtotal()
+  {
+      gt=0;
+      for(i=0;i<iprice.length;i++)
+      {
+        itotal[i].innerText=(iprice[i].value)*(iquantity[i].value);
+        gt=gt+((iprice[i].value)*(iquantity[i].value));  
+    }
+   gtotal.innerText=gt;
+  }
+
+  subtotal();
+
+</script>
+
+
+
 </body>
 </html>

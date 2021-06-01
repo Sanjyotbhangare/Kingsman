@@ -45,7 +45,8 @@ body{
     transform: translate(-50%,-50%);
     background-color:rgba(130, 196, 216, 0.397);
     border-radius: 20px;
-    color:rgb(113, 113, 197);
+    /* color:rgb(113, 113, 197); */
+    color: white;
 }
 .login-box h1{
     float: right;

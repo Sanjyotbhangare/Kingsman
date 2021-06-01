@@ -6,7 +6,7 @@ session_unset();
 
 session_destroy();
 
-header("Location: face.html");
+header("Location: face.php");
 exit();
 ?>
 

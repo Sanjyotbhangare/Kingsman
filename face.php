@@ -1,3 +1,7 @@
+<?php 
+session_start();
+?>
+
 <html>
 <head>
     <title>Menswear</title>
@@ -16,7 +20,9 @@
         <div class="content">
             Welcome to our
             <h1>Impressive <br> Collection For Men</h1>
-            <button type="button">Let's Go </button>
+            <div class="bu">
+            <button type="button"><a href="main.php">Let's Go </a></button>
+        </div>
         </div>
     </div>
 

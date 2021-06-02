@@ -4,7 +4,7 @@ session_start();
 
 <html>
 <head>
-    <title>Menswear</title>
+    <title>Icecube</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -18,8 +18,7 @@ session_start();
         </div>
         </div>
         <div class="content">
-            Welcome to our
-            <h1>Impressive <br> Collection For Men</h1>
+            <h1>Ice Cube</h1>
             <div class="bu">
             <button type="button"><a href="main.php">Let's Go </a></button>
         </div>

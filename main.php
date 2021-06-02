@@ -5,7 +5,7 @@ session_start();
 
 <html lang="en">
 <head>
-  <title>Menswear</title>
+  <title>Icecube</title>
   <meta charset="utf-8">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/side.css">
@@ -95,16 +95,16 @@ if(isset($_SESSION['cart']))
     <div class="sidenav">     
 
     <form action="main.php" method="GET">
-  <select name="brand">
-    <option value="none" selected disabled hidden>Brand</option>
+  <select name="Flavour">
+    <option value="none" selected disabled hidden>Flavour</option>
 
   <?php
-  $num=pg_num_rows($brand);
+  $num=pg_num_rows($flavour);
 if($num>0){  
-    while($product=pg_fetch_array($brand)){
+    while($product=pg_fetch_array($flavour)){
      ?>
     
-    <option><?php echo $product['bname'];?></option>
+    <option><?php echo $product['fname'];?></option>
 
   <?php
     }
@@ -112,16 +112,15 @@ if($num>0){
   ?>
   </select>
   <br><br>
-  <select name="category">
-  <option value="none" selected disabled hidden>Category</option>
+  <select name="Product">
+  <option value="none" selected disabled hidden>Product</option>
 
 <?php
-$num=pg_num_rows($category);
+$num=pg_num_rows($prod);
 if($num>0){  
-  while($product=pg_fetch_array($category)){
+  while($product=pg_fetch_array($prod)){
    ?>
-  
-  <option><?php echo $product['catgnm']; ?></option>
+  <option><?php echo $product['ptype']; ?></option>
 
 <?php
   }
@@ -130,56 +129,7 @@ if($num>0){
 </select>
 <br><br>
 
-<select name="ctype">
-<option value="none" selected disabled hidden>Clothe</option>
-<?php
-$num=pg_num_rows($ctype);
-if($num>0){  
-  while($product=pg_fetch_array($ctype)){
-   ?>
-  
-  <option><?php echo $product['ctnm']; ?></option>
-
-<?php
-  }
-}
-?>
-</select>
-<br><br>
-<select name="pattern">
-<option value="none" selected disabled hidden>Pattern</option>
-<?php
-$num=pg_num_rows($pattern);
-if($num>0){  
-  while($product=pg_fetch_array($pattern)){
-   ?>
-  
-  <option><?php echo $product['pnm']; ?></option>
-
-<?php
-  }
-}
-?>
-</select>
-<br><br>
-
-<select name="fitting">
-<option value="none" selected disabled hidden>Fitting</option>
-<?php
-$num=pg_num_rows($fitting);
-if($num>0){  
-  while($product=pg_fetch_array($fitting)){
-   ?>
-  
-  <option><?php echo $product['fnm']; ?></option>
-
-<?php
-  }
-}
-?>
-</select>
-<br><br>
-<select name="size">
+<select name="Size">
 <option value="none" selected disabled hidden>Size</option>
 <?php
 $num=pg_num_rows($size);
@@ -195,56 +145,39 @@ if($num>0){
 ?>
 </select>
 <br><br>
-  <button type="submit" class="bu">Apply</button>
+
+<button type="submit" class="bu">Apply</button>
 </form>
 </div>
 <?php
 include("db_conn.php");
-if(isset($_GET['brand']) || isset($_GET['category']) || isset($_GET['ctype']) || isset($_GET['pattern']) || isset($_GET['fitting']) || isset($_GET['size'])){ 
-        if(isset($_GET['brand'])){
-          $aa=$_GET['brand'];
-          $a="select bname from brand where bname='$aa'";
+if(isset($_GET['Flavour']) || isset($_GET['Product']) || isset($_GET['Size'])){ 
+        if(isset($_GET['Flavour'])){
+          $aa=$_GET['Flavour'];
+          $a="select fname from flavour where fname='$aa'";
          }else{
-          $a='select bname from brand';
+          $a='select fname from flavour';
         }
         
-        if(isset($_GET['category'])){
-          $bb=$_GET['category'];
-          $b="select catgnm from category where catgnm='$bb'";
+        if(isset($_GET['Product'])){
+          $bb=$_GET['Product'];
+          $b="select ptype from product where ptype='$bb'";
         }else{
-          $b='select catgnm from category';
+          $b='select ptype from product';
         }
-        if(isset($_GET['ctype'])){
-          $cc=$_GET['ctype'];
-          $c="select ctnm from ctype where ctnm='$cc'";
+        if(isset($_GET['Size'])){
+          $ff=$_GET['Size'];
+          $f="select size from product where size='$ff'";
         }else{
-          $c='select ctnm from ctype';
-        }
-        if(isset($_GET['pattern'])){
-          $dd=$_GET['pattern'];
-          $d="select pnm from pattern where pnm='$dd'";
-        }else{
-          $d='select pnm from pattern';
-        }
-        if(isset($_GET['fitting'])){
-          $ee=$_GET['fitting'];
-          $e="select fnm from fitting where fnm='$ee'";
-        }else{
-          $e='select fnm from fitting';
-        }
-        if(isset($_GET['size'])){
-          $ff=$_GET['size'];
-          $f="select size from fitting where size=$ff";
-        }else{
-          $f='select size from fitting';
+          $f='select size from product';
         }
      
       
-         $query="select pid,bname,catgnm,ctnm,pnm,fnm,size,rate,cstk,image from vproduct 
-         where bname in ($a) and catgnm in ($b) and ctnm in ($c) and pnm in ($d) and fnm in ($e) and size in ($f)";       
+         $query="select * from vproduct 
+         where fname in ($a) and ptype in ($b) and size in ($f)";       
          $sql=pg_query($conn,$query);
         }else{
-           $query="select pid,bname,catgnm,ctnm,pnm,fnm,size,rate,cstk,image from vproduct order by pid";
+           $query="select * from vproduct order by fpid";
               $sql=pg_query($conn,$query);  
          } 
       
@@ -261,64 +194,7 @@ if(isset($_GET['brand']) || isset($_GET['category']) || isset($_GET['ctype']) ||
 
 
 
-   <?php
-include("db_conn.php");
-
-   
-   
-   
-   
-      if(isset($_GET['brand']) || isset($_GET['category']) || isset($_GET['ctype']) || isset($_GET['pattern']) || isset($_GET['fitting']) || isset($_GET['size'])){ 
-        if(isset($_GET['brand'])){
-          $aa=$_GET['brand'];
-          $a="select bname from brand where bname='$aa'";
-         }else{
-          $a='select bname from brand';
-        }
-        
-        if(isset($_GET['category'])){
-          $bb=$_GET['category'];
-          $b="select catgnm from category where catgnm='$bb'";
-        }else{
-          $b='select catgnm from category';
-        }
-        if(isset($_GET['ctype'])){
-          $cc=$_GET['ctype'];
-          $c="select ctnm from ctype where ctnm='$cc'";
-        }else{
-          $c='select ctnm from ctype';
-        }
-        if(isset($_GET['pattern'])){
-          $dd=$_GET['pattern'];
-          $d="select pnm from pattern where pnm='$dd'";
-        }else{
-          $d='select pnm from pattern';
-        }
-        if(isset($_GET['fitting'])){
-          $ee=$_GET['fitting'];
-          $e="select fnm from fitting where fnm='$ee'";
-        }else{
-          $e='select fnm from fitting';
-        }
-        if(isset($_GET['size'])){
-          $ff=$_GET['size'];
-          $f="select size from fitting where size=$ff";
-        }else{
-          $f='select size from fitting';
-        }
-     
-      
-         $query="select pid,bname,catgnm,ctnm,pnm,fnm,size,rate,cstk,image from vproduct 
-         where bname in ($a) and catgnm in ($b) and ctnm in ($c) and pnm in ($d) and fnm in ($e) and size in ($f)";       
-         $sql=pg_query($conn,$query);
-        //  header("Location:main.php");
-        }else{
-           $query="select pid,bname,catgnm,ctnm,pnm,fnm,size,rate,cstk,image from vproduct order by pid";
-              $sql=pg_query($conn,$query);
-              // header("Location:main.php");  
-         } 
-    
-      ?>
+  
 
  <?php
 //  include(".php");
@@ -337,11 +213,11 @@ include("db_conn.php");
                <div class='card'>    
                   <img class="card-img-top col-12 mx-12" src="./images/<?php echo $product['image']; ?>" alt="product image " />
                   <div class="card-body">
-                        <h5 class="card-title fo"><?php  echo $product['bname']."\t".$product['catgnm']."\t".$product['pnm']."\t".$product['ctnm']; ?> </h5>
-                      <p class="card-text"><h9><?php  echo $product['fnm']."\t".$product['size']; ?></h9>
+                        <h5 class="card-title fo"><?php  echo $product['fname']."\t".$product['ptype']; ?> </h5>
+                      <p class="card-text"><h9><?php  echo $product['size']; ?></h9>
                       <br><h8> &#8377; <?php  echo $product['rate']; ?></h8></p>
                       <button class="button btn btn-primary" name="add_to_cart"> Add to Cart  </button>
-                      <input type="hidden" name="pid" value=<?php echo $product['pid'];?> >
+                      <input type="hidden" name="fpid" value=<?php echo $product['fpid'];?> >
                  </div>
             </div>
             </div>

@@ -5,7 +5,7 @@ session_start();
 <html lang="en">
 <head>
 <head>
-  <title>Menswear</title>
+  <title>Icecube</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -38,12 +38,9 @@ session_start();
                 <div class="border bg-light rounded p-4">
              <table class="table">
                 <thead class="text-center">
-                    <th scope="col">Product Id</th>
-                    <th scope="col">Brand</th>
-                    <th scope="col">Category</th>
-                    <th scope="col">Clothe</th>
-                    <th scope="col">Pattern</th>
-                    <th scope="col">Fitting</th>
+                    <th scope="col">Item Id</th>
+                    <th scope="col">Flavour</th>
+                    <th scope="col">Product</th>
                     <th scope="col">Size</th>
                     <th scope="col">Price</th>
                     <th scope="col">Quantity</th>
@@ -57,25 +54,22 @@ session_start();
                 {   
                   foreach($_SESSION['cart'] as $key => $value)
                   {
-                     $a=$value['pid'];
-                    $sql="select * from vproduct where pid=$a";
+                     $a=$value['fpid'];
+                    $sql="select fpid,fname,ptype,size,rate,image from vproduct where fpid=$a";
                     $query=pg_query($conn,$sql);
                     while($product=pg_fetch_array($query)){
                     ?>
                     <tr>
-                        <td><?php echo $product['pid']; ?></td>
-                        <td><?php echo $product['bname']; ?></td>
-                        <td><?php echo $product['catgnm']; ?></td>
-                        <td><?php echo $product['ctnm']; ?></td>
-                        <td><?php echo $product['pnm']; ?></td>
-                        <td><?php echo $product['fnm']; ?></td>
+                        <td><?php echo $product['fpid']; ?></td>
+                        <td><?php echo $product['fname']; ?></td>
+                        <td><?php echo $product['ptype']; ?></td>
                         <td><?php echo $product['size']; ?></td>
                         <td><?php echo $product['rate'];?><input type="hidden" class='iprice' value='<?php echo $product['rate'];?>'></td>
                         <td>
                           <form action="mycart.php" method="POST">
                 
                           <input type='number'class='text-center iquantity' name="mod_quantity" onchange="this.form.submit();" value="<?php echo $value['Quantity'];  ?>" min='1' max='10'>
-                          <input type='hidden' name='pid' value='<?php echo $product['pid']; ?>'>
+                          <input type='hidden' name='fpid' value='<?php echo $product['fpid']; ?>'>
                           </form>
                          </td>
                         <td class='itotal'></td>
@@ -83,7 +77,7 @@ session_start();
 
                             <form action="mycart.php" method="POST">
                             <button class='btn btn-outline-danger' name="remove">Remove</button>
-                            <input type='hidden' name='pid' value='<?php echo $product['pid']; ?>'>
+                            <input type='hidden' name='fpid' value='<?php echo $product['fpid']; ?>'>
                             </form>                       
                         </td>
 
@@ -99,7 +93,7 @@ session_start();
             </div>
         </div>
 
-            <div class="col-lg-2.5">
+            <div class="col-lg-3">
             <div class="border bg-light rounded p-4">
                 <h4>Grand Total :</h4>
                 <h5 class="text-right" id="gtotal"></h5>
@@ -123,6 +117,7 @@ session_start();
                 </div>
         
                     <button type="submit" class="btn btn-primary btn-block" name="pay">Make Purchase</button>
+                    <input type='hidden' name='gtotal' value='$g'>
                 </form>
                 <?php 
                  }

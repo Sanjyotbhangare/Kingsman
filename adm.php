@@ -23,7 +23,7 @@ if(empty($id)){
 
 }else{
 
-   $sql="select id,password from admin where id='$id' and password='$pas' ";
+   $sql="select aid,password from admin where aid='$id' and password='$pas' ";
    $result=pg_query($conn,$sql);
     $r=pg_fetch_array($result,$row=null);
     print_r($r);

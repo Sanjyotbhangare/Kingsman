@@ -35,7 +35,7 @@ if(empty($mob)){
     header("Location: login.php?error=Invalid Mobile Number or Password");
     exit();
    }else{
-    $_SESSION['mobno']=$mob;
+    $_SESSION['mob']=$mob;
     header("Location: main.php");
     exit();
    }

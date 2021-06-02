@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Menswear</title>
+        <title>Icecube</title>
         <link rel="stylesheet" href="css/login.css">
     </head>
     <style>

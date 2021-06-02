@@ -18,8 +18,8 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 
     if(isset($_SESSION['cart']))
     {
-        $myitems=array_column($_SESSION['cart'],'pid');
-        if(in_array($_POST['pid'],$myitems))
+        $myitems=array_column($_SESSION['cart'],'fpid');
+        if(in_array($_POST['fpid'],$myitems))
         {
             echo"<script>
             alert('Item Already Added');
@@ -28,7 +28,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
         }
         else{
        $count=count($_SESSION['cart']);
-       $_SESSION['cart'][$count]=array('pid'=>$_POST['pid']);
+       $_SESSION['cart'][$count]=array('fpid'=>$_POST['fpid']);
        $_SESSION['cart'][$count]['Quantity']=1;
        echo"<script>
        alert('Item Added');
@@ -38,7 +38,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     }
     else
     {
-      $_SESSION['cart'][0]=array('pid'=>$_POST['pid']);
+      $_SESSION['cart'][0]=array('fpid'=>$_POST['fpid']);
       $_SESSION['cart'][0]['Quantity']=1;
       echo"<script>
             alert('Item Added');
@@ -50,7 +50,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
   if(isset($_POST['remove'])){
       foreach($_SESSION['cart'] as $key => $value)
       {
-        if($value['pid']==$_POST['pid']){
+        if($value['fpid']==$_POST['fpid']){
             unset($_SESSION['cart'][$key]);
             $_SESSION['cart']=array_values($_SESSION['cart']);
             echo"<script>
@@ -65,7 +65,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
   {
     foreach($_SESSION['cart'] as $key => $value)
     {
-      if($value['pid']==$_POST['pid'])
+      if($value['fpid']==$_POST['fpid'])
       {
         $_SESSION['cart'][$key]['Quantity']=$_POST['mod_quantity'];  
         echo"<script>

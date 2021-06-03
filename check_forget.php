@@ -35,7 +35,7 @@ if(empty($mob)){
    $s="select * from cust where mobno=$m";
    $result=pg_query($conn,$s);
    $r=pg_fetch_array($result,$row=null);
-   if($r === NULL){
+   if($r == NULL){
     header("Location: forget.php?error=Mobile Number is not exist");
     exit();
    }

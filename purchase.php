@@ -6,7 +6,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 {
   if(isset($_POST['pay']))
   {
-    $ono=1000;
+    $ono=1020;
      $a="select ono from ord";
      $ab=pg_query($conn,$a);
       $r=pg_num_rows($ab);

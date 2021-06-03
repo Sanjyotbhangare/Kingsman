@@ -32,7 +32,9 @@ if(empty($id)){
     header("Location: admin.php?error=Invalid ID Number or Password");
     exit();
    }else{
-       echo "Hello";
+    $_SESSION['ID']=$id;
+    header("Location: Admin/admain.php");
+    exit();
    }
 
 

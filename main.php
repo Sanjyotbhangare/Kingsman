@@ -50,7 +50,6 @@ session_start();
     justify-content: space-between;
 } */ 
 
-
 .navbar img{
   /* height: 250%; */
   margin-top: 2%;

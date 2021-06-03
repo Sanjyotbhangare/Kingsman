@@ -14,7 +14,13 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 {
   if(isset($_POST['add_to_cart']))
   {
-   
+    if($_SESSION['mobno'] === NULL){
+      session_destroy();
+      echo"<script>
+          alert('Login is Required');
+          window.location.href='face.php';
+          </script>";
+    }
 
     if(isset($_SESSION['cart']))
     {

@@ -99,7 +99,7 @@ session_start();
             </div>
         </div>
 
-            <div class="col-lg-2.5">
+            <div class="col-lg-3">
             <div class="border bg-light rounded p-4">
                 <h4>Grand Total :</h4>
                 <h5 class="text-right" id="gtotal"></h5>

@@ -39,17 +39,22 @@ body{
 .login-box{
     width: 280px;
     position: absolute;
+    
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    color:black;
+    background-color:rgba(130, 196, 216, 0.397);
+    border-radius: 20px;
+    /* color:rgb(113, 113, 197); */
+    color: white;
 }
 .login-box h1{
     float: right;
-    margin-right: 30%;
+    text-align: center;
+    /* margin-right: 30%; */
     font-size: 50px;
     border-bottom: 8px solid violet;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
     padding: 13px 0 ;
 }
 .textbox{
@@ -79,6 +84,8 @@ body{
     width: 100%;
     background: none;
     border: 2px solid violet;
+    border-radius: 20px;
+
     color: black;
     padding: 5px;
     font-size: 18px;
@@ -97,4 +104,12 @@ body{
 }
 .btn:hover{
     background-color: grey;
+}
+
+.error{
+   /* background: white; */
+   color:red;
+   padding: 5px;
+   width:100%;
+   border-radius: 5px;
 }

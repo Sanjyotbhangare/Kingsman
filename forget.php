@@ -26,9 +26,9 @@
             <img src="images/logo.png" class="rotate">
     </div>
     
-    <form action="log.php" method="post">
+    <form action="check_forget.php" method="post">
         <div class="login-box">
-            <h1>Login</h1>
+            <h2>Forget Password</h2>
             <?php if (isset($_GET['error'])){ ?>
                 <p class="error"><?php echo $_GET['error']; ?></p>
              <?php } ?>
@@ -40,11 +40,13 @@
 
             <div class="textbox">
             <i class="fa fa-lock" aria-hidden="true"></i>
-                <input type="password" placeholder="Password" name="pas">
+                <input type="password" placeholder="New Password" name="pas">
             </div>
-             Don't Remember ?  <a href="forget.php"> Forget Password</a>
-             <br>
-             New Customer   <a href="registration.php"> Registration </a> 
+
+            <div class="textbox">
+            <i class="fa fa-lock" aria-hidden="true"></i>
+                <input type="password" placeholder="Confirm New Password" name="cpas">
+            </div>
 
             <input class="btn" type="submit" name="" value="Sign In">
  

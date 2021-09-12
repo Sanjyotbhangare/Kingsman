@@ -1,3 +1,4 @@
+@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
 *{
     margin: 0;
     padding: 0;
@@ -32,11 +33,23 @@
  }
 }
 
-
+.bill{
+    width: 280px;
+    position: absolute;
+    
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color:rgba(130, 196, 216, 0.397);
+    border-radius: 20px;
+    /* color:rgb(113, 113, 197); */
+    color: white;
+ }
 
 .navbar{
     /* margin-top: 2000%; */
     padding-top: 1%;
+    position: relative;
     width:95%;
     height: 15%;
     margin: auto;
@@ -46,12 +59,13 @@
 }
 .bu{
     padding-right: 5%;
+    color: white;
     /* white-space: normal; */
 }
 button{
     color: #fbfcfd;
     /* padding-left: 5px; */
-    padding: 12px 25px;
+    padding: 10px 20px;
     /* text-decoration: none; */
     background: blueviolet;
     border: 1px solid #fff;
@@ -72,7 +86,8 @@ button{
 .content{
     color:#fbfcfd;
     position: absolute;
-    color: black;
+    color: whitesmoke;
+    /* border: 2px; */
     top:50%;
     left: 8%;
     transform: translateY(-50%);
@@ -83,4 +98,8 @@ h1{
   
     margin: 10px 0 30px;
     line-height: 80px;
+}
+h2{
+  color: white;
+  font-size: 65px;
 }
